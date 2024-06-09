@@ -1,0 +1,13 @@
+//TODO arq criado com 'npx knex migrate:make student'
+exports.up = knex => knex.schema.createTable("student", table => {
+    table.increments("id")
+    table.text("name")     
+    table.text("login")
+    table.integer("course_id").references("id").inTable("course").onDelete("CASCADE")
+    table.integer("class_id").references("id").inTable("class").onDelete("CASCADE").nullable()
+    table.timestamp("create_at").default(knex.fn.now())
+})
+
+exports.down = knex => knex.schema.dropTable("student")
+
+//TODO após criar o atalho no package.json é só rodar npm run migrate pra criar a tabela

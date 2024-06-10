@@ -1,11 +1,11 @@
 exports.up = knex => knex.schema.createTable("class", table => {
     table.increments("id")
     table.text("time")
-    table.text("class_number")
-    table.text("plan")
-    table.bool("plan_status")
-    table.integer("teacher_id").references("id").inTable("teacher").onDelete("CASCADE")
-    table.integer("discipline_id").references("id").inTable("discipline").onDelete("CASCADE")
+    table.text("classroom")
+    table.text("plan").nullable()
+    table.bool("plan_status").nullable()
+    table.integer("teacher_id").references("id").inTable("teacher")
+    table.integer("discipline_id").references("id").inTable("discipline")
     table.timestamp("create_at").default(knex.fn.now())
 })
 

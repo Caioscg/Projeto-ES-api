@@ -5,6 +5,6 @@ const StudentController = new StudentControllers()
 
 const studentRoutes = Router()
 
-studentRoutes.get("/", StudentController.create)
+studentRoutes.post("/", StudentController.create)
 
 module.exports = studentRoutes

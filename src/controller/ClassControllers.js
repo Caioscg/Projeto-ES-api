@@ -18,9 +18,27 @@ class ClassControllers {
             throw new AppError("Defina uma disciplina para a turma!")
         }
 
-        await knex("class").insert({ time, classroom, teacher_id, discipline_id })
+        const [ class_id ] = await knex("class").insert({ time, classroom, teacher_id, discipline_id })
+
+        await knex("plan").insert({ class_id })
 
         return res.status(201).json()
+    }
+
+    async show(req, res) {
+        const { teacher_id } = req.params
+
+        const classes = await knex("class").where({ teacher_id })
+
+        return res.json({ classes })
+    }
+
+    async index(req, res) {
+        const { id, teacher_id } = req.params
+
+        const classe = await knex("class").where({ id, teacher_id })
+
+        return res.json({ classe })
     }
 }
 

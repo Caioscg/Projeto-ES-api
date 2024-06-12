@@ -4,7 +4,6 @@ exports.up = knex => knex.schema.createTable("student", table => {
     table.text("name")     
     table.text("login")
     table.integer("course_id").references("id").inTable("course").onDelete("CASCADE")
-    table.integer("class_id").references("id").inTable("class").onDelete("CASCADE").nullable()
     table.timestamp("create_at").default(knex.fn.now())
 })
 

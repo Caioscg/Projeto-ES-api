@@ -9,6 +9,7 @@ const courseRoutes = require("./course.routes")
 const disciplineRoutes = require("./discipline.routes")
 const planRoutes = require("./plan.routes")
 const classnotesRoutes = require("./classnotes.routes")
+const sessionsRoutes = require("./sessions.routes")
 
 const routes = Router()
 
@@ -21,5 +22,6 @@ routes.use("/course", courseRoutes)
 routes.use("/discipline", disciplineRoutes)
 routes.use("/plan", planRoutes)
 routes.use("/notes", classnotesRoutes)
+routes.use("/sessions", sessionsRoutes)
 
 module.exports = routes

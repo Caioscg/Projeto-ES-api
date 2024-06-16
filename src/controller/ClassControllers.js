@@ -3,7 +3,7 @@ const knex = require("../database/knex")
 
 class ClassControllers {
     async create(req, res) {
-        const { time, classroom, teacher_id, discipline_id } = req.body
+        const { time, classroom, teacher, discipline } = req.body
 
         if (!time) {
             throw new AppError("Defina um horário para a turma!")
@@ -11,18 +11,24 @@ class ClassControllers {
         if (!classroom) {
             throw new AppError("Defina uma sala para a turma!")
         }
-        if (!teacher_id) {
+        if (!teacher) {
             throw new AppError("Defina um professor para a turma!")
         }
-        if (!discipline_id) {
+        if (!discipline) {
             throw new AppError("Defina uma disciplina para a turma!")
         }
 
-        const [ class_id ] = await knex("class").insert({ time, classroom, teacher_id, discipline_id })
+        const [ class_id ] = await knex("class").insert({ time, classroom, teacher, discipline })
 
         await knex("plan").insert({ class_id })
 
         return res.status(201).json()
+    }
+
+    async showAll(req, res) {
+        const classes = await knex("class")
+
+        return res.json({ classes })
     }
 
     async show(req, res) {

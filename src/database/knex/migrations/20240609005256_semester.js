@@ -1,5 +1,6 @@
 exports.up = knex => knex.schema.createTable("semester", table => {
     table.increments("id")
+    table.date("name")
     table.date("begin_date")
     table.date("end_date")
     table.text("notes").nullable()

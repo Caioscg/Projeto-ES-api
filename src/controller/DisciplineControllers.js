@@ -13,6 +13,10 @@ class DisciplineControllers {
 
         return res.status(201).json()
     }
+
+    async show(req, res) {
+        
+    }
 }
 
 module.exports = DisciplineControllers

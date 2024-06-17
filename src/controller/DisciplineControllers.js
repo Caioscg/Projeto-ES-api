@@ -14,8 +14,10 @@ class DisciplineControllers {
         return res.status(201).json()
     }
 
-    async show(req, res) {
-        
+    async showAll(req, res) {
+        const disciplines = await knex("discipline")
+
+        return res.json({ disciplines })
     }
 }
 

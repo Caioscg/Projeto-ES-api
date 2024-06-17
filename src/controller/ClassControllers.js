@@ -34,7 +34,9 @@ class ClassControllers {
     async show(req, res) {
         const { teacher_id } = req.params
 
-        const classes = await knex("class").where({ teacher_id })
+        const [ teacher ] = await knex("teacher").where({ id: teacher_id })
+
+        const classes = await knex("class").where({ teacher: teacher.name })
 
         return res.json({ classes })
     }

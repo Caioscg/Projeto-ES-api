@@ -30,6 +30,12 @@ class TeacherControllers {
 
         return res.status(201).json()
     }
+
+    async showAll(req, res) {
+        const teachers = await knex("teacher")
+
+        return res.json({ teachers })
+    }
 }
 
 module.exports = TeacherControllers

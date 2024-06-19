@@ -60,7 +60,7 @@ open another window on VScode (CRTL + SHIFT + N) and run bove repositories at th
 
 ## 💻 Site link
 
-ufg.netlify.app
+https://ufg.netlify.app
 
 Servers are free (and due to that, slow, sadly), so I recommend to download the project to test it.
 

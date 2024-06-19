@@ -52,3 +52,20 @@ Start the server
 ```bash
   npm run dev
 ```
+
+And do the same with the frontend repository:
+https://github.com/Caioscg/Projeto-ES
+
+open another window on VScode (CRTL + SHIFT + N) and run bove repositories at the same time
+
+## 💻 Site link
+
+ufg.netlify.app
+
+Servers are free (and due to that, slow, sadly), so I recommend to download the project to test it.
+
+If you want the test on the web:
+- copy the link on your browser: ufg.netlify.app
+- wait 2 minutes
+- refresh the page
+- test it

@@ -28,6 +28,14 @@ class PlanControllers {
 
         return res.status(201).json()
     }
+
+    async index(req, res) {
+        const { id } = req.params
+
+        const plan = await knex("plan").where({ id })
+
+        return res.json({ plan })
+    }
 }
 
 module.exports = PlanControllers

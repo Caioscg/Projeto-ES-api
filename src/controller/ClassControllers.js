@@ -42,9 +42,9 @@ class ClassControllers {
     }
 
     async index(req, res) {
-        const { id, teacher_id } = req.params
+        const { id } = req.params
 
-        const classe = await knex("class").where({ id, teacher_id })
+        const classe = await knex("class").where({ id })
 
         return res.json({ classe })
     }

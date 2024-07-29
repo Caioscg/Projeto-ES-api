@@ -4,6 +4,7 @@ exports.up = knex => knex.schema.createTable("plan", table => {
     table.text("plan_changes").nullable()
     table.bool("plan_status", false)
     table.integer("class_id").references("id").inTable("class")
+    table.text("class_name")
     table.timestamp("create_at").default(knex.fn.now())
 })
 

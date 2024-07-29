@@ -8,5 +8,6 @@ const planRoutes = Router()
 planRoutes.patch("/:class_id", PlanController.sendPlan)
 planRoutes.put("/:class_id", PlanController.reviewPlan)
 planRoutes.get("/:id", PlanController.index)
+planRoutes.get("/", PlanController.show)
 
 module.exports = planRoutes

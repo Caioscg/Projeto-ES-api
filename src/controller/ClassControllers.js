@@ -20,7 +20,7 @@ class ClassControllers {
 
         const [ class_id ] = await knex("class").insert({ time, classroom, teacher, discipline })
 
-        await knex("plan").insert({ class_id })
+        await knex("plan").insert({ class_id, class_name: discipline })
 
         return res.status(201).json()
     }

@@ -10,21 +10,19 @@ class PlanControllers {
             throw new AppError("Escreva o plano de ensino da turma!")
         }
 
-        await knex("plan").update({ description, plan_changes: null, plan_status: 0 }).where({ class_id })
+        await knex("plan").update({ description, plan_changes: null, plan_status: 1 }).where({ class_id })
 
         return res.status(201).json()
     }
 
     async reviewPlan(req, res) {
         const { class_id } = req.params
-        const { plan_status, plan_changes } = req.body
+        const { plan_changes } = req.body
 
-        if (plan_status) {
-            await knex("plan").update({ plan_status, plan_changes: null }).where({ class_id })
-        }
-        else {
-            await knex("plan").update({ plan_status, plan_changes, description: null }).where({ class_id })
-        }
+        if (plan_changes)
+            await knex("plan").update({ plan_status: 0, plan_changes, description: null }).where({ class_id })
+        else
+            await knex("plan").update({ plan_status: 0 }).where({ class_id })
 
         return res.status(201).json()
     }
@@ -38,7 +36,7 @@ class PlanControllers {
     }
 
     async show(req, res) {
-        const plans = await knex("plan").where({ plan_status: 0 })
+        const plans = await knex("plan").where({ plan_status: 1 })
 
         return res.json({ plans })
     }
